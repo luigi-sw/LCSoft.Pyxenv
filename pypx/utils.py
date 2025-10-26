@@ -16,7 +16,7 @@ def run_command(cmd: list[str], check: bool = True, **kwargs) -> subprocess.Comp
     Returns:
         CompletedProcess instance
     '''
-    print(f"🧩 Executando: {' '.join(map(str, cmd))}")
+    print(f"- Executando: {' '.join(map(str, cmd))}")
     return subprocess.run(cmd, check=check, **kwargs)
 
 def extract_version(version_string: str) -> Optional[str]:

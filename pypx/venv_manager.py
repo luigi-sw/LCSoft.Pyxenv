@@ -33,7 +33,7 @@ class VenvManager:
         env_path = ENV_DIR / env_name
         
         if env_path.exists():
-            print(f'⚠️  Ambiente "{env_name}" já existe.')
+            print(f'-  Ambiente "{env_name}" já existe.')
             return env_path
 
         try:
@@ -45,7 +45,7 @@ class VenvManager:
         
         try:
             run_command([python_exe, '-m', 'venv', str(env_path)])
-            print(f'✅ Ambiente criado em {env_path}')
+            print(f'- Ambiente criado em {env_path}')
             return env_path
         except Exception as e:
             raise VenvError(f'Erro ao criar ambiente: {e}')
@@ -71,14 +71,14 @@ class VenvManager:
             if not activate_script.exists():
                 raise VenvError(f'Script de ativação não encontrado: {activate_script}')
             
-            print(f'🚀 Abrindo novo terminal com ambiente "{env_name}" ativado...')
+            print(f'- Abrindo novo terminal com ambiente "{env_name}" ativado...')
             subprocess.run(['cmd.exe', '/k', str(activate_script)])
         else:
             activate_script = env_path / 'bin' / 'activate'
             if not activate_script.exists():
                 raise VenvError(f'Script de ativação não encontrado: {activate_script}')
             
-            print(f'🚀 Abrindo shell com ambiente "{env_name}" ativado...')
+            print(f'- Abrindo shell com ambiente "{env_name}" ativado...')
             subprocess.run(['bash', '--rcfile', str(activate_script)])
 
     @staticmethod

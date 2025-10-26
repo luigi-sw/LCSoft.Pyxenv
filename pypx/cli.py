@@ -17,12 +17,12 @@ def main() -> None:
         description='pypx: npx para Python — gerencie versões e ambientes facilmente',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog='''
-Exemplos:
-  pypx 3.11 script.py          # Executa script com Python 3.11
-  pypx --create-env myenv      # Cria ambiente virtual
-  pypx --activate myenv        # Ativa ambiente virtual
-  pypx --list                  # Lista versões pypx
-  pypx --list-all              # Lista todas as versões
+            Exemplos:
+                pypx 3.11 script.py          # Executa script com Python 3.11
+                pypx --create-env myenv      # Cria ambiente virtual
+                pypx --activate myenv        # Ativa ambiente virtual
+                pypx --list                  # Lista versões pypx
+                pypx --list-all              # Lista todas as versões
         '''
     )
     
@@ -45,7 +45,7 @@ Exemplos:
 
         # List Python versions
         if args.list or args.list_all:
-            print('✅ Versões detectadas:')
+            print('- Versões detectadas:')
             versions = PythonManager.find_versions(list_all=args.list_all)
             for ver, path, source in versions:
                 tag = '(pypx)' if source == 'pypx' else '(global)'
@@ -54,7 +54,7 @@ Exemplos:
 
         # List environments
         if args.list_envs:
-            print('🧰 Ambientes disponíveis:')
+            print('- Ambientes disponíveis:')
             envs = VenvManager.list_all()
             if envs:
                 for env in envs:
@@ -80,7 +80,7 @@ Exemplos:
             try:
                 python_exe = PythonManager.get_executable(version)
             except PypxError:
-                print(f'⚠️  Python {version} não encontrado. Instalando...')
+                print(f'- Python {version} não encontrado. Instalando...')
                 PythonInstaller.install(version)
                 python_exe = PythonManager.get_executable(version)
             
@@ -91,13 +91,13 @@ Exemplos:
         parser.print_help()
 
     except PypxError as e:
-        print(f'❌ Erro: {e}')
+        print(f'- Erro: {e}')
         sys.exit(1)
     except KeyboardInterrupt:
-        print('\n⚠️  Operação cancelada.')
+        print('\n- Operação cancelada.')
         sys.exit(130)
     except Exception as e:
-        print(f'❌ Erro inesperado: {e}')
+        print(f'- Erro inesperado: {e}')
         sys.exit(1)
 
 

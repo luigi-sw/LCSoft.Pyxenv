@@ -324,35 +324,3 @@ Se este projeto foi útil para você, considere dar uma ⭐!
 [⬆ Voltar ao topo](#pypx-)
 
 </div>
-
-#
-   
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   installation
-   quickstart
-   changelog
-   api
-   .. modules
-
-.. toctree::
-   :maxdepth: 2
-   :caption: API Reference:
-
-   modules
-
-
-cmds
-pip install build
-python -m build
-pip install pyinstaller
-pyinstaller --onefile --name pypx pypx/cli.py
-pip install cx_Freeze
-python setup_cx.py bdist_msi
-pip install sphinx sphinx-rtd-theme
-sphinx-quickstart docs
-sphinx-apidoc -o docs/source pypx
-make html
-make clean

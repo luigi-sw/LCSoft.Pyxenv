@@ -28,7 +28,7 @@ class PythonInstaller:
         Raises:
             DownloadError: If no installer found
         '''
-        print(f'🔍 Procurando versões disponíveis para {version_prefix}...')
+        print(f'- Procurando versões disponíveis para {version_prefix}...')
         
         try:
             html = urllib.request.urlopen(PYTHON_FTP_BASE).read().decode('utf-8')
@@ -56,7 +56,7 @@ class PythonInstaller:
                 if exe_match:
                     filename = exe_match.group(1)
                     full_url = ver_url + filename
-                    print(f'✅ Encontrado instalador: {full_url}')
+                    print(f'- Encontrado instalador: {full_url}')
                     return ver, full_url
             except Exception:
                 continue
@@ -83,11 +83,11 @@ class PythonInstaller:
             installer_url = f'{PYTHON_FTP_BASE}{version}/python-{version}-amd64.exe'
 
         installer_path = Path(tempfile.gettempdir()) / Path(installer_url).name
-        print(f'⬇️  Baixando instalador de {installer_url}')
+        print(f'-  Baixando instalador de {installer_url}')
         
         try:
             urllib.request.urlretrieve(installer_url, installer_path)
-            print(f'✅ Instalador salvo em: {installer_path}')
+            print(f'- Instalador salvo em: {installer_path}')
             return installer_path
         except urllib.error.HTTPError as e:
             raise DownloadError(f'Erro HTTP {e.code} ao baixar {installer_url}')
@@ -111,11 +111,11 @@ class PythonInstaller:
         install_dir = PYTHON_DIR / version
         
         if install_dir.exists():
-            print(f'✅ Python {version} já instalado em {install_dir}')
+            print(f'- Python {version} já instalado em {install_dir}')
             return install_dir
 
         installer = PythonInstaller.download(version)
-        print(f'📦 Instalando Python {version} em {install_dir}')
+        print(f'- Instalando Python {version} em {install_dir}')
         
         cmd = [
             str(installer),
@@ -137,5 +137,5 @@ class PythonInstaller:
         if not python_exe.exists():
             raise InstallationError(f'python.exe não encontrado em {install_dir}')
 
-        print(f'✅ Python {version} instalado com sucesso.')
+        print(f'- Python {version} instalado com sucesso.')
         return install_dir
