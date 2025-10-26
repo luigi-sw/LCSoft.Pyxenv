@@ -1,0 +1,33 @@
+# Include documentation
+include README.md
+include LICENSE
+include CHANGELOG.md
+include pyproject.toml
+
+# Include configuration files
+include .pre-commit-config.yaml
+include .gitignore
+
+# Include test data if any
+recursive-include tests *.py
+recursive-include tests *.txt
+recursive-include tests *.json
+
+# Exclude compiled files and cache
+global-exclude *.py[cod]
+global-exclude __pycache__
+global-exclude *.so
+global-exclude .DS_Store
+
+# Exclude version control
+global-exclude .git*
+global-exclude .hg*
+
+# Exclude build artifacts
+global-exclude *.egg-info
+prune build
+prune dist
+prune .tox
+prune .pytest_cache
+prune .mypy_cache
+prune htmlcov
