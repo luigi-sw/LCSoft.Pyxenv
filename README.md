@@ -1,4 +1,4 @@
-# pyxenv 🐍 - Python Version/Environment Manager
+# Pyxenv 🐍 - Python Version/Environment Manager
 
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -6,7 +6,7 @@
 
 > **npx para Python** - Gerencie versões do Python e ambientes virtuais com facilidade
 
-`pyxenv` é uma ferramenta de linha de comando inspirada no `npx` do Node.js, projetada para simplificar o gerenciamento de múltiplas versões do Python e ambientes virtuais.
+`Pyxenv` é uma ferramenta de linha de comando inspirada no `npx` do Node.js, projetada para simplificar o gerenciamento de múltiplas versões do Python e ambientes virtuais.
 
 ## Características
 
