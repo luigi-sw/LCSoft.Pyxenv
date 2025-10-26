@@ -3,7 +3,7 @@ Changelog
 
 v0.2.0 (2025-06-XX)
 -------------------
-* Added ``pypx install`` and ``uninstall`` commands.  
+* Added ``pyxenv install`` and ``uninstall`` commands.  
 * Automatic PATH management on Windows.  
 * Improved error messages for missing downloads.  
 

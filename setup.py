@@ -8,19 +8,19 @@ long_description = readme_file.read_text(encoding="utf-8") if readme_file.exists
 version = "0.2.0"
 
 setup(
-    name="pypx",
+    name="pyxenv",
     version=version,
     description="npx-like tool for Python: switch versions and manage virtual environments",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Luigi C. Filho",
     author_email="lcdev@lcdesenvolvimentos.com.br",
-    url="https://github.com/luigicfilho/pypx",
+    url="https://github.com/luigicfilho/pyxenv",
     project_urls={
-        "Bug Tracker": "https://github.com/luigicfilho/pypx/issues",
-        "Documentation": "https://github.com/luigicfilho/pypx#readme",
-        "Source Code": "https://github.com/luigicfilho/pypx",
-        "Changelog": "https://github.com/luigicfilho/pypx/blob/main/CHANGELOG.md",
+        "Bug Tracker": "https://github.com/luigicfilho/pyxenv/issues",
+        "Documentation": "https://github.com/luigicfilho/pyxenv#readme",
+        "Source Code": "https://github.com/luigicfilho/pyxenv",
+        "Changelog": "https://github.com/luigicfilho/pyxenv/blob/main/CHANGELOG.md",
     },
     keywords=[
         "python",
@@ -35,7 +35,7 @@ setup(
     include_package_data=True,
     entry_points={
         "console_scripts": [
-            "pypx=pypx.cli:main",
+            "pyxenv=pyxenv.cli:main",
         ],
     },
     python_requires=">=3.8",

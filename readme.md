@@ -1,4 +1,4 @@
-# pypx 🐍 - Python Version/Environment Manager
+# pyxenv 🐍 - Python Version/Environment Manager
 
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -6,7 +6,7 @@
 
 > **npx para Python** - Gerencie versões do Python e ambientes virtuais com facilidade
 
-`pypx` é uma ferramenta de linha de comando inspirada no `npx` do Node.js, projetada para simplificar o gerenciamento de múltiplas versões do Python e ambientes virtuais.
+`pyxenv` é uma ferramenta de linha de comando inspirada no `npx` do Node.js, projetada para simplificar o gerenciamento de múltiplas versões do Python e ambientes virtuais.
 
 ## Características
 
@@ -22,22 +22,22 @@
 ### Via pip (recomendado)
 
 ```bash
-pip install pypx
+pip install pyxenv
 ```
 
 ### Via GitHub
 
 ```bash
-git clone https://github.com/luigicfilho/pypx.git
-cd pypx
+git clone https://github.com/luigicfilho/pyxenv.git
+cd pyxenv
 pip install -e .
 ```
 
 ### Desenvolvimento
 
 ```bash
-git clone https://github.com/luigicfilho/pypx.git
-cd pypx
+git clone https://github.com/luigicfilho/pyxenv.git
+cd pyxenv
 pip install -e ".[dev]"
 ```
 
@@ -47,39 +47,39 @@ pip install -e ".[dev]"
 
 ```bash
 # Executa script.py com Python 3.11
-pypx 3.11 script.py
+pyxenv 3.11 script.py
 
 # Com argumentos
-pypx 3.11 script.py --arg1 value1 --arg2 value2
+pyxenv 3.11 script.py --arg1 value1 --arg2 value2
 ```
 
 ### Gerenciar versões do Python
 
 ```bash
-# Listar versões instaladas pelo pypx
-pypx --list
+# Listar versões instaladas pelo pyxenv
+pyxenv --list
 
 # Listar todas as versões (incluindo globais)
-pypx --list-all
+pyxenv --list-all
 
 # Instalar automaticamente (Windows)
-pypx 3.12 script.py  # Instala 3.12 se não existir
+pyxenv 3.12 script.py  # Instala 3.12 se não existir
 ```
 
 ### Gerenciar ambientes virtuais
 
 ```bash
 # Criar ambiente virtual
-pypx 3.11 --create-env meu-projeto
+pyxenv 3.11 --create-env meu-projeto
 
-# Criar com nome padrão (pypx-3.11)
-pypx 3.11 --create-env
+# Criar com nome padrão (pyxenv-3.11)
+pyxenv 3.11 --create-env
 
 # Ativar ambiente
-pypx --activate meu-projeto
+pyxenv --activate meu-projeto
 
 # Listar ambientes
-pypx --list-envs
+pyxenv --list-envs
 ```
 
 ## Exemplos
@@ -88,24 +88,24 @@ pypx --list-envs
 
 ```bash
 # Testar seu código em diferentes versões
-pypx 3.8 test_script.py
-pypx 3.9 test_script.py
-pypx 3.11 test_script.py
-pypx 3.12 test_script.py
+pyxenv 3.8 test_script.py
+pyxenv 3.9 test_script.py
+pyxenv 3.11 test_script.py
+pyxenv 3.12 test_script.py
 ```
 
 ### Projetos isolados
 
 ```bash
 # Projeto Django com Python 3.11
-pypx 3.11 --create-env django-project
-pypx --activate django-project
+pyxenv 3.11 --create-env django-project
+pyxenv --activate django-project
 pip install django
 django-admin startproject mysite
 
 # Projeto FastAPI com Python 3.12
-pypx 3.12 --create-env fastapi-project
-pypx --activate fastapi-project
+pyxenv 3.12 --create-env fastapi-project
+pyxenv --activate fastapi-project
 pip install fastapi uvicorn
 ```
 
@@ -126,28 +126,28 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
-      - name: Install pypx
-        run: pip install pypx
+      - name: Install pyxenv
+        run: pip install pyxenv
       - name: Run tests
-        run: pypx ${{ matrix.python-version }} -m pytest
+        run: pyxenv ${{ matrix.python-version }} -m pytest
 ```
 
 ## Comandos
 
 | Comando | Descrição |
 |---------|-----------|
-| `pypx <version> <script>` | Executa script com versão específica |
-| `pypx --list` | Lista versões instaladas pelo pypx |
-| `pypx --list-all` | Lista todas as versões detectadas |
-| `pypx --create-env <name>` | Cria ambiente virtual |
-| `pypx --activate <name>` | Ativa ambiente virtual |
-| `pypx --list-envs` | Lista ambientes criados |
-| `pypx --version` | Mostra versão do pypx |
+| `pyxenv <version> <script>` | Executa script com versão específica |
+| `pyxenv --list` | Lista versões instaladas pelo pyxenv |
+| `pyxenv --list-all` | Lista todas as versões detectadas |
+| `pyxenv --create-env <name>` | Cria ambiente virtual |
+| `pyxenv --activate <name>` | Ativa ambiente virtual |
+| `pyxenv --list-envs` | Lista ambientes criados |
+| `pyxenv --version` | Mostra versão do pyxenv |
 
 ## Estrutura de Diretórios
 
 ```
-~/.pypx/
+~/.pyxenv/
 ├── pythons/          # Versões Python instaladas
 │   ├── 3.8.10/
 │   ├── 3.11.5/
@@ -155,18 +155,18 @@ jobs:
 └── envs/             # Ambientes virtuais
     ├── my-project/
     ├── django-app/
-    └── pypx-3.11/
+    └── pyxenv-3.11/
 ```
 
 ## Configuração
 
-pypx funciona sem configuração, mas você pode personalizar:
+pyxenv funciona sem configuração, mas você pode personalizar:
 
 ```python
-# ~/.pypx/config.py (opcional)
-PYPX_HOME = Path.home() / ".pypx"
-PYTHON_DIR = PYPX_HOME / "pythons"
-ENV_DIR = PYPX_HOME / "envs"
+# ~/.pyxenv/config.py (opcional)
+pyxenv_HOME = Path.home() / ".pyxenv"
+PYTHON_DIR = pyxenv_HOME / "pythons"
+ENV_DIR = pyxenv_HOME / "envs"
 ```
 
 ## Troubleshooting
@@ -175,20 +175,20 @@ ENV_DIR = PYPX_HOME / "envs"
 
 ```bash
 # Verificar versões disponíveis
-pypx --list-all
+pyxenv --list-all
 
 # Instalar versão específica (Windows)
-pypx 3.11 --version  # Instala automaticamente
+pyxenv 3.11 --version  # Instala automaticamente
 ```
 
 ### Ambiente virtual não ativa
 
 ```bash
 # Verificar se existe
-pypx --list-envs
+pyxenv --list-envs
 
 # Recriar se necessário
-pypx 3.11 --create-env nome-do-env
+pyxenv 3.11 --create-env nome-do-env
 ```
 
 ### Permissões no Windows
@@ -203,8 +203,8 @@ Contribuições são bem-vindas! Veja [CONTRIBUTING.md](CONTRIBUTING.md) para de
 
 ```bash
 # Clone o repositório
-git clone https://github.com/luigicfilho/pypx.git
-cd pypx
+git clone https://github.com/luigicfilho/pyxenv.git
+cd pyxenv
 
 # Instale dependências de desenvolvimento
 pip install -e ".[dev]"
@@ -216,7 +216,7 @@ pre-commit install
 pytest
 
 # Verifique cobertura
-pytest --cov=pypx --cov-report=html
+pytest --cov=pyxenv --cov-report=html
 ```
 
 ### Executar testes
@@ -232,23 +232,23 @@ pytest tests/test_cli.py
 pytest -vv
 
 # Com cobertura
-pytest --cov=pypx --cov-report=term-missing
+pytest --cov=pyxenv --cov-report=term-missing
 ```
 
 ### Code style
 
 ```bash
 # Formatar código
-black pypx tests
+black pyxenv tests
 
 # Organizar imports
-isort pypx tests
+isort pyxenv tests
 
 # Verificar estilo
-flake8 pypx tests
+flake8 pyxenv tests
 
 # Type checking
-mypy pypx
+mypy pyxenv
 ```
 
 ## Licença
@@ -278,8 +278,8 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ## Links Úteis
 
-- [Documentação](https://github.com/luigicfilho/pypx#readme)
-- [Issues](https://github.com/luigicfilho/pypx/issues)
+- [Documentação](https://github.com/luigicfilho/pyxenv#readme)
+- [Issues](https://github.com/luigicfilho/pyxenv/issues)
 - [Changelog](CHANGELOG.md)
 - [Guia de Contribuição](CONTRIBUTING.md)
 
@@ -292,7 +292,7 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ### v0.5.0
 - [ ] Interface TUI interativa
-- [ ] Configuração por projeto (.pypxrc)
+- [ ] Configuração por projeto (.pyxenvrc)
 - [ ] Integração com Docker
 
 ### v1.0.0
@@ -307,13 +307,13 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 - **pipx** - Instala e executa aplicações Python
 - **conda** - Gerenciador de pacotes e ambientes
 
-`pypx` combina o melhor desses mundos com a simplicidade do `npx`!
+`pyxenv` combina o melhor desses mundos com a simplicidade do `npx`!
 
 ## Star History
 
 Se este projeto foi útil para você, considere dar uma ⭐!
 
-[![Star History Chart](https://api.star-history.com/svg?repos=luigicfilho/pypx&type=Date)](https://star-history.com/#luigicfilho/pypx&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=luigicfilho/pyxenv&type=Date)](https://star-history.com/#luigicfilho/pyxenv&Date)
 
 ---
 
@@ -321,6 +321,6 @@ Se este projeto foi útil para você, considere dar uma ⭐!
   
 **Feito com ❤️ por [Luigi C. Filho](https://github.com/luigicfilho)**
 
-[⬆ Voltar ao topo](#pypx-)
+[⬆ Voltar ao topo](#pyxenv-)
 
 </div>

@@ -1,61 +1,61 @@
-pypx package
+pyxenv package
 ============
 
 Submodules
 ----------
 
-pypx.cli module
+pyxenv.cli module
 ---------------
 
-.. automodule:: pypx.cli
+.. automodule:: pyxenv.cli
    :members:
    :show-inheritance:
    :undoc-members:
 
-pypx.config module
+pyxenv.config module
 ------------------
 
-.. automodule:: pypx.config
+.. automodule:: pyxenv.config
    :members:
    :show-inheritance:
    :undoc-members:
 
-pypx.exceptions module
+pyxenv.exceptions module
 ----------------------
 
-.. automodule:: pypx.exceptions
+.. automodule:: pyxenv.exceptions
    :members:
    :show-inheritance:
    :undoc-members:
 
-pypx.installer module
+pyxenv.installer module
 ---------------------
 
-.. automodule:: pypx.installer
+.. automodule:: pyxenv.installer
    :members:
    :show-inheritance:
    :undoc-members:
 
-pypx.python\_manager module
+pyxenv.python\_manager module
 ---------------------------
 
-.. automodule:: pypx.python_manager
+.. automodule:: pyxenv.python_manager
    :members:
    :show-inheritance:
    :undoc-members:
 
-pypx.utils module
+pyxenv.utils module
 -----------------
 
-.. automodule:: pypx.utils
+.. automodule:: pyxenv.utils
    :members:
    :show-inheritance:
    :undoc-members:
 
-pypx.venv\_manager module
+pyxenv.venv\_manager module
 -------------------------
 
-.. automodule:: pypx.venv_manager
+.. automodule:: pyxenv.venv_manager
    :members:
    :show-inheritance:
    :undoc-members:
@@ -63,7 +63,7 @@ pypx.venv\_manager module
 Module contents
 ---------------
 
-.. automodule:: pypx
+.. automodule:: pyxenv
    :members:
    :show-inheritance:
    :undoc-members:

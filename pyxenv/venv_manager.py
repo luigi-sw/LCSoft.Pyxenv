@@ -5,10 +5,10 @@ import subprocess
 from pathlib import Path
 from typing import Optional
 
-from pypx.config import ENV_DIR
-from pypx.exceptions import VenvError
-from pypx.python_manager import PythonManager
-from pypx.utils import run_command
+from pyxenv.config import ENV_DIR
+from pyxenv.exceptions import VenvError
+from pyxenv.python_manager import PythonManager
+from pyxenv.utils import run_command
 
 
 class VenvManager:
@@ -21,7 +21,7 @@ class VenvManager:
         
         Args:
             version: Python version
-            env_name: Environment name (default: "pypx-{version}")
+            env_name: Environment name (default: "pyxenv-{version}")
             
         Returns:
             Path to created environment
@@ -29,7 +29,7 @@ class VenvManager:
         Raises:
             VenvError: If creation fails
         '''
-        env_name = env_name or f'pypx-{version}'
+        env_name = env_name or f'pyxenv-{version}'
         env_path = ENV_DIR / env_name
         
         if env_path.exists():

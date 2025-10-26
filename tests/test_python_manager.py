@@ -1,4 +1,4 @@
-'''Tests for pypx.python_manager module.'''
+'''Tests for pyxenv.python_manager module.'''
 
 import shutil
 from pathlib import Path
@@ -6,22 +6,22 @@ from unittest.mock import patch, Mock
 
 import pytest
 
-from pypx.python_manager import PythonManager
-from pypx.exceptions import PythonNotFoundError
+from pyxenv.python_manager import PythonManager
+from pyxenv.exceptions import PythonNotFoundError
 
 
 class TestPythonManager:
     '''Tests for PythonManager class.'''
 
-    def test_find_versions_empty(self, temp_pypx_home):
+    def test_find_versions_empty(self, temp_pyxenv_home):
         '''Test finding versions with no installations.'''
         versions = PythonManager.find_versions(list_all=False)
         assert versions == []
 
-    def test_find_versions_with_pypx_installations(self, temp_pypx_home, mock_subprocess_run):
-        '''Test finding pypx-installed versions.'''
+    def test_find_versions_with_pyxenv_installations(self, temp_pyxenv_home, mock_subprocess_run):
+        '''Test finding pyxenv-installed versions.'''
         # Create fake Python installation
-        python_dir = temp_pypx_home / 'pythons' / '3.11.5'
+        python_dir = temp_pyxenv_home / 'pythons' / '3.11.5'
         python_dir.mkdir(parents=True)
         
         if shutil.which('python'):  # Windows
@@ -36,9 +36,9 @@ class TestPythonManager:
             
             assert len(versions) == 1
             assert versions[0][0] == '3.11.5'
-            assert versions[0][2] == 'pypx'
+            assert versions[0][2] == 'pyxenv'
 
-    def test_find_versions_with_global_installations(self, temp_pypx_home):
+    def test_find_versions_with_global_installations(self, temp_pyxenv_home):
         '''Test finding global Python installations.'''
         with patch('shutil.which', return_value='/usr/bin/python3.11'), \
              patch.object(PythonManager, '_get_version_from_executable', return_value='3.11.5'):
@@ -48,11 +48,11 @@ class TestPythonManager:
             assert len(versions) >= 1
             assert any(v[2] == 'global' for v in versions)
 
-    def test_find_versions_sorted(self, temp_pypx_home):
+    def test_find_versions_sorted(self, temp_pyxenv_home):
         '''Test that versions are sorted correctly.'''
         # Create multiple fake installations
         for version in ['3.9.0', '3.11.5', '3.10.2']:
-            python_dir = temp_pypx_home / 'pythons' / version
+            python_dir = temp_pyxenv_home / 'pythons' / version
             python_dir.mkdir(parents=True)
             (python_dir / 'python.exe').touch()
 
@@ -75,9 +75,9 @@ class TestPythonManager:
             exe = PythonManager.get_executable('3.11')
             assert exe == '/usr/bin/python3.11'
 
-    def test_get_executable_pypx_version(self, temp_pypx_home):
-        '''Test getting pypx-installed Python version.'''
-        python_dir = temp_pypx_home / 'pythons' / '3.11.5'
+    def test_get_executable_pyxenv_version(self, temp_pyxenv_home):
+        '''Test getting pyxenv-installed Python version.'''
+        python_dir = temp_pyxenv_home / 'pythons' / '3.11.5'
         python_dir.mkdir(parents=True)
         python_exe = python_dir / 'python.exe'
         python_exe.touch()

@@ -6,9 +6,9 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-from pypx.config import PYTHON_DIR, PYTHON_FTP_BASE
-from pypx.exceptions import DownloadError, InstallationError
-from pypx.utils import is_version_prefix, run_command
+from pyxenv.config import PYTHON_DIR, PYTHON_FTP_BASE
+from pyxenv.exceptions import DownloadError, InstallationError
+from pyxenv.utils import is_version_prefix, run_command
 
 
 class PythonInstaller:
@@ -97,7 +97,7 @@ class PythonInstaller:
     @staticmethod
     def install(version: str) -> Path:
         '''
-        Install Python silently to pypx directory.
+        Install Python silently to pyxenv directory.
         
         Args:
             version: Python version to install

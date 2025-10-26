@@ -1,5 +1,5 @@
 <!-- omit in toc -->
-# Contributing to <Project>
+# Contributing to pyxenv
 
 First off, thanks for taking the time to contribute! ❤️
 

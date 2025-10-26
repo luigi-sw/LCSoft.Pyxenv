@@ -1,4 +1,4 @@
-'''Utility functions for pypx.'''
+'''Utility functions for pyxenv.'''
 
 import re
 import subprocess

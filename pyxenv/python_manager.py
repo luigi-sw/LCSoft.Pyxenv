@@ -6,9 +6,9 @@ import subprocess
 from pathlib import Path
 from typing import Optional
 
-from pypx.config import PYTHON_DIR
-from pypx.exceptions import PythonNotFoundError
-from pypx.utils import extract_version
+from pyxenv.config import PYTHON_DIR
+from pyxenv.exceptions import PythonNotFoundError
+from pyxenv.utils import extract_version
 
 
 class PythonManager:
@@ -17,7 +17,7 @@ class PythonManager:
     @staticmethod
     def find_versions(list_all: bool = False) -> list[tuple[str, str, str]]:
         '''
-        List Python versions installed globally and via pypx.
+        List Python versions installed globally and via pyxenv.
         
         Args:
             list_all: Include global Python installations
@@ -42,7 +42,7 @@ class PythonManager:
                         versions.append((version, path, 'global'))
                         seen.add(path.lower())
 
-        # pypx versions
+        # pyxenv versions
         if PYTHON_DIR.exists():
             for directory in PYTHON_DIR.iterdir():
                 if directory.is_dir():
@@ -50,7 +50,7 @@ class PythonManager:
                     if py_exe and py_exe.exists() and str(py_exe).lower() not in seen:
                         version = PythonManager._get_version_from_executable(str(py_exe))
                         if version:
-                            versions.append((version, str(py_exe), 'pypx'))
+                            versions.append((version, str(py_exe), 'pyxenv'))
                             seen.add(str(py_exe).lower())
 
         # Sort by version (descending)
@@ -108,7 +108,7 @@ class PythonManager:
         if exe:
             return exe
 
-        # Try pypx installation
+        # Try pyxenv installation
         local_exe = PYTHON_DIR / version / ('python.exe' if os.name == 'nt' else 'bin/python')
         if local_exe.exists():
             return str(local_exe)

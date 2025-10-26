@@ -1,4 +1,4 @@
-'''Tests for pypx.installer module.'''
+'''Tests for pyxenv.installer module.'''
 
 import tempfile
 from pathlib import Path
@@ -7,8 +7,8 @@ import urllib.error
 
 import pytest
 
-from pypx.installer import PythonInstaller
-from pypx.exceptions import DownloadError, InstallationError
+from pyxenv.installer import PythonInstaller
+from pyxenv.exceptions import DownloadError, InstallationError
 
 
 class TestPythonInstaller:
@@ -99,23 +99,23 @@ class TestPythonInstaller:
             with pytest.raises(DownloadError, match='Erro ao baixar'):
                 PythonInstaller.download('3.11.5')
 
-    def test_install_already_installed(self, temp_pypx_home):
+    def test_install_already_installed(self, temp_pyxenv_home):
         '''Test skipping installation when already installed.'''
         version = '3.11.5'
-        install_dir = temp_pypx_home / 'pythons' / version
+        install_dir = temp_pyxenv_home / 'pythons' / version
         install_dir.mkdir(parents=True)
         
         result = PythonInstaller.install(version)
         
         assert result == install_dir
 
-    def test_install_success(self, temp_pypx_home, mock_subprocess_run):
+    def test_install_success(self, temp_pyxenv_home, mock_subprocess_run):
         '''Test successful installation.'''
         version = '3.11.5'
         installer_path = Path(tempfile.gettempdir()) / 'python-3.11.5-amd64.exe'
         
         with patch.object(PythonInstaller, 'download', return_value=installer_path):
-            install_dir = temp_pypx_home / 'pythons' / version
+            install_dir = temp_pyxenv_home / 'pythons' / version
             python_exe = install_dir / 'python.exe'
             
             # Create fake python.exe after installation
@@ -131,18 +131,18 @@ class TestPythonInstaller:
             assert result == install_dir
             assert python_exe.exists()
 
-    def test_install_command_failure(self, temp_pypx_home):
+    def test_install_command_failure(self, temp_pyxenv_home):
         '''Test handling installation command failure.'''
         version = '3.11.5'
         installer_path = Path(tempfile.gettempdir()) / 'python-3.11.5-amd64.exe'
         
         with patch.object(PythonInstaller, 'download', return_value=installer_path), \
-             patch('pypx.utils.run_command', side_effect=Exception('Install failed')):
+             patch('pyxenv.utils.run_command', side_effect=Exception('Install failed')):
             
             with pytest.raises(InstallationError, match='Falha na instalação'):
                 PythonInstaller.install(version)
 
-    def test_install_exe_not_found(self, temp_pypx_home, mock_subprocess_run):
+    def test_install_exe_not_found(self, temp_pyxenv_home, mock_subprocess_run):
         '''Test error when python.exe not found after installation.'''
         version = '3.11.5'
         installer_path = Path(tempfile.gettempdir()) / 'python-3.11.5-amd64.exe'

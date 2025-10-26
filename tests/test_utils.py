@@ -1,11 +1,11 @@
-'''Tests for pypx.utils module.'''
+'''Tests for pyxenv.utils module.'''
 
 import subprocess
 from unittest.mock import patch, Mock
 
 import pytest
 
-from pypx.utils import run_command, extract_version, is_version_prefix
+from pyxenv.utils import run_command, extract_version, is_version_prefix
 
 
 class TestRunCommand:

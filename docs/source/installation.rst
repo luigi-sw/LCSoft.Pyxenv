@@ -10,14 +10,14 @@ From PyPI (stable)
 ------------------
 .. code-block:: console
 
-   $ pip install pypx
+   $ pip install pyxenv
 
 From source (development)
 -------------------------
 .. code-block:: console
 
-   $ git clone https://github.com/seu-usuario/pypx.git
-   $ cd pypx
+   $ git clone https://github.com/seu-usuario/pyxenv.git
+   $ cd pyxenv
    $ python -m venv venv
    $ source venv/bin/activate      # Windows: venv\Scripts\activate
    $ pip install -e .[dev]
@@ -26,4 +26,4 @@ Verify
 ------
 .. code-block:: console
 
-   $ pypx --help
+   $ pyxenv --help

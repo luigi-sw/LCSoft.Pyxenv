@@ -1,11 +1,11 @@
-'''Configuration and constants for pypx.'''
+'''Configuration and constants for pyxenv.'''
 
 from pathlib import Path
 
 # Diretórios base
-PYPX_HOME = Path.home() / '.pypx'
-PYTHON_DIR = PYPX_HOME / 'pythons'
-ENV_DIR = PYPX_HOME / 'envs'
+pyxenv_HOME = Path.home() / '.pyxenv'
+PYTHON_DIR = pyxenv_HOME / 'pythons'
+ENV_DIR = pyxenv_HOME / 'envs'
 
 # URLs
 PYTHON_FTP_BASE = 'https://www.python.org/ftp/python/'

@@ -8,7 +8,7 @@ import sys
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'pypx'
+project = 'pyxenv'
 copyright = '2025, Luigi C. Filho'
 author = 'Luigi C. Filho'
 release = '"0.2.0"'

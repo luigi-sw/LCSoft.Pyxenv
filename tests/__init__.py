@@ -1,4 +1,4 @@
-'''Test suite for pypx.'''
+'''Test suite for pyxenv.'''
 
 import sys
 from pathlib import Path

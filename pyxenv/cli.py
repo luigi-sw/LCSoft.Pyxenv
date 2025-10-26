@@ -1,28 +1,28 @@
-'''Command-line interface for pypx.'''
+'''Command-line interface for pyxenv.'''
 
 import argparse
 import sys
 
-from pypx import __version__
-from pypx.exceptions import PypxError
-from pypx.installer import PythonInstaller
-from pypx.python_manager import PythonManager
-from pypx.venv_manager import VenvManager
-from pypx.utils import run_command
+from pyxenv import __version__
+from pyxenv.exceptions import pyxenvError
+from pyxenv.installer import PythonInstaller
+from pyxenv.python_manager import PythonManager
+from pyxenv.venv_manager import VenvManager
+from pyxenv.utils import run_command
 
 
 def main() -> None:
     '''Main CLI entry point.'''
     parser = argparse.ArgumentParser(
-        description='pypx: npx para Python — gerencie versões e ambientes facilmente',
+        description='pyxenv: npx para Python — gerencie versões e ambientes facilmente',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog='''
             Exemplos:
-                pypx 3.11 script.py          # Executa script com Python 3.11
-                pypx --create-env myenv      # Cria ambiente virtual
-                pypx --activate myenv        # Ativa ambiente virtual
-                pypx --list                  # Lista versões pypx
-                pypx --list-all              # Lista todas as versões
+                pyxenv 3.11 script.py          # Executa script com Python 3.11
+                pyxenv --create-env myenv      # Cria ambiente virtual
+                pyxenv --activate myenv        # Ativa ambiente virtual
+                pyxenv --list                  # Lista versões pyxenv
+                pyxenv --list-all              # Lista todas as versões
         '''
     )
     
@@ -31,16 +31,16 @@ def main() -> None:
     parser.add_argument('--create-env', metavar='NAME', help='Cria um ambiente virtual')
     parser.add_argument('--activate', metavar='NAME', help='Ativa um ambiente existente')
     parser.add_argument('--list-envs', action='store_true', help='Lista ambientes criados')
-    parser.add_argument('--list', action='store_true', help='Lista versões pypx')
+    parser.add_argument('--list', action='store_true', help='Lista versões pyxenv')
     parser.add_argument('--list-all', action='store_true', help='Lista todas as versões')
-    parser.add_argument('--version', action='store_true', dest='show_version', help='Mostra versão do pypx')
+    parser.add_argument('--version', action='store_true', dest='show_version', help='Mostra versão do pyxenv')
 
     args, extras = parser.parse_known_args()
 
     try:
         # Show version
         if args.show_version and not any([args.script, args.create_env, args.activate, args.list, args.list_all, args.list_envs]):
-            print(f'pypx {__version__}')
+            print(f'pyxenv {__version__}')
             return
 
         # List Python versions
@@ -48,7 +48,7 @@ def main() -> None:
             print('- Versões detectadas:')
             versions = PythonManager.find_versions(list_all=args.list_all)
             for ver, path, source in versions:
-                tag = '(pypx)' if source == 'pypx' else '(global)'
+                tag = '(pyxenv)' if source == 'pyxenv' else '(global)'
                 print(f'  {ver} → {path} {tag}')
             return
 
@@ -79,7 +79,7 @@ def main() -> None:
             version = args.version
             try:
                 python_exe = PythonManager.get_executable(version)
-            except PypxError:
+            except pyxenvError:
                 print(f'- Python {version} não encontrado. Instalando...')
                 PythonInstaller.install(version)
                 python_exe = PythonManager.get_executable(version)
@@ -90,7 +90,7 @@ def main() -> None:
         # No valid command
         parser.print_help()
 
-    except PypxError as e:
+    except pyxenvError as e:
         print(f'- Erro: {e}')
         sys.exit(1)
     except KeyboardInterrupt:
