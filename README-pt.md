@@ -304,6 +304,6 @@ Se este projeto foi útil para você, considere dar uma ⭐!
   
 **Feito com ❤️ por [Luigi C. Filho](https://github.com/luigicfilho)**
 
-[⬆ Back to top](#pyxenv---python-versionenvironment-manager)
+[⬆ Back to top](#)
 
 </div>
