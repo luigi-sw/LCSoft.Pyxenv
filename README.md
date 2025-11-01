@@ -304,6 +304,4 @@ If this project has been useful to you, consider giving it a ⭐!
   
 **Made with ❤️ by [Luigi C. Filho](https://github.com/luigicfilho)**
 
-[⬆ Back to top](#)
-
 </div>
