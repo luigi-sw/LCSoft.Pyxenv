@@ -26,6 +26,10 @@ jobs:
           pip install build pyinstaller
           pip install pytest pytest-cov pytest-mock
           #pip install -r requirements.txt
+          if ("${{ runner.os }}" -eq "Windows") {
+            pip install cx_Freeze
+          }
+        shell: pwsh
           
       #- name: Run tests
       #  run: pytest tests/ -v
