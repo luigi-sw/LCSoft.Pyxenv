@@ -2,24 +2,24 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-> **npx para Python** - Gerencie versões do Python e ambientes virtuais com facilidade
 
-`Pyxenv` é uma ferramenta de linha de comando inspirada no `npx` do Node.js, projetada para simplificar o gerenciamento de múltiplas versões do Python e ambientes virtuais.
+> **npx for Python** - Manage Python versions and virtual environments with ease
 
-## Características
+`Pyxenv` is a command-line tool inspired by Node.js's `npx`, designed to simplify managing multiple Python versions and virtual environments.
 
-- **Troca rápida de versões** - Execute scripts com diferentes versões do Python
-- **Instalação automática** - Baixa e instala versões do Python automaticamente (Windows)
-- **Gerenciamento de venvs** - Crie e ative ambientes virtuais facilmente
-- **Detecção inteligente** - Lista todas as versões Python disponíveis
-- **Multi-plataforma** - Suporte para Windows, Linux e macOS
-- **Zero configuração** - Funciona imediatamente após a instalação
+## Features
 
-## Instalação
+- **Quick version switching** - Run scripts with different Python versions
+- **Automatic installation** - Downloads and installs Python versions automatically (Windows)
+- **Virtual environment management** - Create and activate virtual environments easily
+- **Smart detection** - Lists all available Python versions
+- **Cross-platform** - Support for Windows, Linux and macOS
+- **Zero configuration** - Works immediately after installation
 
-### Via pip (recomendado)
+## Installation
+
+### Via pip (recommended)
 
 ```bash
 pip install pyxenv
@@ -33,77 +33,69 @@ cd pyxenv
 pip install -e .
 ```
 
-### Desenvolvimento
+## Quick Usage
+
+### Run script with specific version
 
 ```bash
-git clone https://github.com/luigicfilho/pyxenv.git
-cd pyxenv
-pip install -e ".[dev]"
-```
-
-## Uso Rápido
-
-### Executar script com versão específica
-
-```bash
-# Executa script.py com Python 3.11
+# Run script.py with Python 3.11
 pyxenv 3.11 script.py
 
-# Com argumentos
+# With arguments
 pyxenv 3.11 script.py --arg1 value1 --arg2 value2
 ```
 
-### Gerenciar versões do Python
+### Manage Python versions
 
 ```bash
-# Listar versões instaladas pelo pyxenv
+# List versions installed by pyxenv
 pyxenv --list
 
-# Listar todas as versões (incluindo globais)
+# List all versions (including globals)
 pyxenv --list-all
 
-# Instalar automaticamente (Windows)
-pyxenv 3.12 script.py  # Instala 3.12 se não existir
+# Auto-install (Windows)
+pyxenv 3.12 script.py  # Installs 3.12 if not exists
 ```
 
-### Gerenciar ambientes virtuais
+### Manage virtual environments
 
 ```bash
-# Criar ambiente virtual
-pyxenv 3.11 --create-env meu-projeto
+# Create virtual environment
+pyxenv 3.11 --create-env my-project
 
-# Criar com nome padrão (pyxenv-3.11)
+# Create with default name (pyxenv-3.11)
 pyxenv 3.11 --create-env
 
-# Ativar ambiente
-pyxenv --activate meu-projeto
+# Activate environment
+pyxenv --activate my-project
 
-# Listar ambientes
+# List environments
 pyxenv --list-envs
 ```
 
-## Exemplos
+## Examples
 
-### Desenvolvimento multi-versão
+### Multi-version development
 
 ```bash
-# Testar seu código em diferentes versões
+# Test your code in different versions
 pyxenv 3.8 test_script.py
 pyxenv 3.9 test_script.py
 pyxenv 3.11 test_script.py
 pyxenv 3.12 test_script.py
 ```
 
-### Projetos isolados
+### Isolated projects
 
 ```bash
-# Projeto Django com Python 3.11
+# Django project with Python 3.11
 pyxenv 3.11 --create-env django-project
 pyxenv --activate django-project
 pip install django
 django-admin startproject mysite
 
-# Projeto FastAPI com Python 3.12
+# FastAPI project with Python 3.12
 pyxenv 3.12 --create-env fastapi-project
 pyxenv --activate fastapi-project
 pip install fastapi uvicorn
@@ -132,38 +124,38 @@ jobs:
         run: pyxenv ${{ matrix.python-version }} -m pytest
 ```
 
-## Comandos
+## Commands
 
-| Comando | Descrição |
-|---------|-----------|
-| `pyxenv <version> <script>` | Executa script com versão específica |
-| `pyxenv --list` | Lista versões instaladas pelo pyxenv |
-| `pyxenv --list-all` | Lista todas as versões detectadas |
-| `pyxenv --create-env <name>` | Cria ambiente virtual |
-| `pyxenv --activate <name>` | Ativa ambiente virtual |
-| `pyxenv --list-envs` | Lista ambientes criados |
-| `pyxenv --version` | Mostra versão do pyxenv |
+| Command | Description |
+|---------|-------------|
+| `pyxenv <version> <script>` | Run script with specific version |
+| `pyxenv --list` | List versions installed by pyxenv |
+| `pyxenv --list-all` | List all detected versions |
+| `pyxenv --create-env <name>` | Create virtual environment |
+| `pyxenv --activate <name>` | Activate virtual environment |
+| `pyxenv --list-envs` | List created environments |
+| `pyxenv --version` | Show pyxenv version |
 
-## Estrutura de Diretórios
+## Directory Structure
 
 ```
 ~/.pyxenv/
-├── pythons/          # Versões Python instaladas
+├── pythons/          # Installed Python versions
 │   ├── 3.8.10/
 │   ├── 3.11.5/
 │   └── 3.12.0/
-└── envs/             # Ambientes virtuais
+└── envs/             # Virtual environments
     ├── my-project/
     ├── django-app/
     └── pyxenv-3.11/
 ```
 
-## Configuração
+## Configuration
 
-pyxenv funciona sem configuração, mas você pode personalizar:
+pyxenv works without configuration, but you can customize:
 
 ```python
-# ~/.pyxenv/config.py (opcional)
+# ~/.pyxenv/config.py (optional)
 pyxenv_HOME = Path.home() / ".pyxenv"
 PYTHON_DIR = pyxenv_HOME / "pythons"
 ENV_DIR = pyxenv_HOME / "envs"
@@ -171,156 +163,147 @@ ENV_DIR = pyxenv_HOME / "envs"
 
 ## Troubleshooting
 
-### Python não encontrado
+### Python not found
 
 ```bash
-# Verificar versões disponíveis
+# Check available versions
 pyxenv --list-all
 
-# Instalar versão específica (Windows)
-pyxenv 3.11 --version  # Instala automaticamente
+# Install specific version (Windows)
+pyxenv 3.11 --version  # Auto-installs
 ```
 
-### Ambiente virtual não ativa
+### Virtual environment not activating
 
 ```bash
-# Verificar se existe
+# Check if it exists
 pyxenv --list-envs
 
-# Recriar se necessário
-pyxenv 3.11 --create-env nome-do-env
+# Recreate if necessary
+pyxenv 3.11 --create-env env-name
 ```
 
-### Permissões no Windows
+## Contributing
 
-Execute o PowerShell como Administrador para instalações automáticas.
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-## Contribuindo
-
-Contribuições são bem-vindas! Veja [CONTRIBUTING.md](CONTRIBUTING.md) para detalhes.
-
-### Setup de desenvolvimento
+### Development setup
 
 ```bash
-# Clone o repositório
+# Clone repository
 git clone https://github.com/luigicfilho/pyxenv.git
 cd pyxenv
 
-# Instale dependências de desenvolvimento
-pip install -e ".[dev]"
+# Install development dependencies
+pip install -e .
 
-# Instale pre-commit hooks
-pre-commit install
-
-# Execute os testes
+# Run tests
 pytest
 
-# Verifique cobertura
+# Check coverage
 pytest --cov=pyxenv --cov-report=html
 ```
 
-### Executar testes
+### Run tests
 
 ```bash
-# Todos os testes
+# All tests
 pytest
 
-# Testes específicos
+# Specific tests
 pytest tests/test_cli.py
 
-# Com output verboso
+# With verbose output
 pytest -vv
 
-# Com cobertura
+# With coverage
 pytest --cov=pyxenv --cov-report=term-missing
 ```
 
 ### Code style
 
 ```bash
-# Formatar código
+# Format code
 black pyxenv tests
 
-# Organizar imports
+# Sort imports
 isort pyxenv tests
 
-# Verificar estilo
+# Check style
 flake8 pyxenv tests
 
 # Type checking
 mypy pyxenv
 ```
 
-## Licença
+## License
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Autor
+## Author
 
 **Luigi C. Filho**
 
 - Email: lcdev@lcdesenvolvimentos.com.br
 - GitHub: [@luigicfilho](https://github.com/luigicfilho)
 
-## Agradecimentos
+## Acknowledgments
 
-- Inspirado pelo [npx](https://github.com/npm/npx) do Node.js
-- Comunidade Python pela excelente documentação
+- Inspired by Node.js's [npx](https://github.com/npm/npx)
+- Python community for excellent documentation
 
-## Status do Projeto
+## Project Status
 
-- ✅ Detecção de versões Python
-- ✅ Gerenciamento de ambientes virtuais
-- ✅ Instalação automática (Windows)
-- 🚧 Instalação automática (Linux/macOS) - Em desenvolvimento
-- 🚧 Cache de downloads - Planejado
-- 🚧 Atualização automática - Planejado
+- [x] Python version detection
+- [x] Virtual environment management
+- [x] Automatic installation (Windows)
+- [ ] Automatic installation (Linux/macOS) - In development
+- [ ] Download cache - Planned
+- [ ] Auto-update - Planned
 
-## Links Úteis
+## Useful Links
 
-- [Documentação](https://github.com/luigicfilho/pyxenv#readme)
+- [Documentation](https://github.com/luigicfilho/pyxenv#readme)
 - [Issues](https://github.com/luigicfilho/pyxenv/issues)
 - [Changelog](CHANGELOG.md)
-- [Guia de Contribuição](CONTRIBUTING.md)
+- [Contribution Guide](CONTRIBUTING.md)
 
 ## Roadmap
 
-### v0.4.0
-- [ ] Suporte a pyenv
-- [ ] Instalação automática no Linux/macOS
-- [ ] Cache de instaladores
+### v0.2.0
+- [ ] pyenv support
+- [ ] Auto-install on Linux/macOS
+- [ ] Installer cache
 
-### v0.5.0
-- [ ] Interface TUI interativa
-- [ ] Configuração por projeto (.pyxenvrc)
-- [ ] Integração com Docker
+### v0.3.0
+- [ ] Interactive TUI interface
+- [ ] Project configuration (.pyxenvrc)
+- [ ] Docker integration
 
 ### v1.0.0
-- [ ] API estável
-- [ ] Documentação completa
-- [ ] Pacote no PyPI verificado
+- [ ] Stable API
+- [ ] Complete documentation
+- [ ] Verified PyPI package
 
-## Inspiração e Alternativas
+## Inspiration and Alternatives
 
-- **pyenv** - Gerenciador de versões Python completo
-- **virtualenv** - Criação de ambientes virtuais
-- **pipx** - Instala e executa aplicações Python
-- **conda** - Gerenciador de pacotes e ambientes
+- **pyenv** - Complete Python version manager
+- **virtualenv** - Virtual environment creation
+- **pipx** - Install and run Python applications
+- **conda** - Package and environment manager
 
-`pyxenv` combina o melhor desses mundos com a simplicidade do `npx`!
+`pyxenv` combines the best of these worlds with the simplicity of `npx`!
 
 ## Star History
 
-Se este projeto foi útil para você, considere dar uma ⭐!
-
-[![Star History Chart](https://api.star-history.com/svg?repos=luigicfilho/pyxenv&type=Date)](https://star-history.com/#luigicfilho/pyxenv&Date)
+If this project has been useful to you, consider giving it a ⭐!
 
 ---
 
 <div align="center">
   
-**Feito com ❤️ por [Luigi C. Filho](https://github.com/luigicfilho)**
+**Made with ❤️ by [Luigi C. Filho](https://github.com/luigicfilho)**
 
-[⬆ Voltar ao topo](#pyxenv-)
+[⬆ Back to top](#pyxenv)
 
 </div>
