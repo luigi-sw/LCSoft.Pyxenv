@@ -270,12 +270,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Roadmap
 
-### v0.2.0
+### v0.3.0
 - [ ] pyenv support
 - [ ] Auto-install on Linux/macOS
 - [ ] Installer cache
 
-### v0.3.0
+### v0.4.0
 - [ ] Interactive TUI interface
 - [ ] Project configuration (.pyxenvrc)
 - [ ] Docker integration
